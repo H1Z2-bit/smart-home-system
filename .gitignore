@@ -1,0 +1,55 @@
+# OS and editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.tmp
+*.log
+
+# Frontend
+node_modules/
+dist/
+.vite/
+coverage/
+frontend/node_modules/
+frontend/dist/
+frontend/.env.local
+
+# Backend build outputs
+build/
+cmake-build-*/
+backend/build/
+backend/cmake-build-*/
+*.exe
+*.dll
+*.lib
+*.obj
+*.pdb
+*.ilk
+
+# Local configuration and secrets
+config.json
+backend/config.json
+*.env
+*.pem
+*.key
+
+# Database local dumps
+*.sql.bak
+*.dump
+*.db
+*.sqlite
+*.sqlite3
+
+# Course materials and large local documents
+*.pdf
+*.pptx
+*.docx
+*.zip
+*.rar
+*.7z
+
+# Keep source docs if explicitly needed
+!*.md
+!database/*.sql
