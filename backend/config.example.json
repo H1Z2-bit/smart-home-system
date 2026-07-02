@@ -1,0 +1,19 @@
+{
+  "server": {
+    "host": "0.0.0.0",
+    "port": 8080
+  },
+  "database": {
+    "host": "127.0.0.1",
+    "port": 3306,
+    "name": "smart_home",
+    "user": "root",
+    "password": "change_me"
+  },
+  "jwt": {
+    "expire_seconds": 7200,
+    "private_key_path": "keys/private.pem",
+    "public_key_path": "keys/public.pem"
+  }
+}
+
