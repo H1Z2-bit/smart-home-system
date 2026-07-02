@@ -22,4 +22,3 @@ HttpResponse AuthController::logout(const HttpRequest&) {
 }
 
 } // namespace smart_home
-

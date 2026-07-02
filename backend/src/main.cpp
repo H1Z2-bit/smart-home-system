@@ -152,10 +152,31 @@ int main() {
         socklen_t len = sizeof(client);
         const int clientFd = static_cast<int>(accept(serverFd, reinterpret_cast<sockaddr*>(&client), &len));
         if (clientFd < 0) continue;
-        char buffer[8192] = {0};
-        const int received = static_cast<int>(recv(clientFd, buffer, sizeof(buffer) - 1, 0));
+        std::string raw;
+        char buffer[4096] = {0};
+        int received = static_cast<int>(recv(clientFd, buffer, sizeof(buffer), 0));
         if (received > 0) {
-            const auto request = parseRequest(std::string(buffer, received));
+            raw.append(buffer, received);
+            auto headerEnd = raw.find("\r\n\r\n");
+            size_t contentLength = 0;
+            if (headerEnd != std::string::npos) {
+                const std::string headerText = raw.substr(0, headerEnd);
+                const std::string key = "content-length:";
+                const auto lowerHeaders = lower(headerText);
+                const auto pos = lowerHeaders.find(key);
+                if (pos != std::string::npos) {
+                    const auto valueStart = pos + key.size();
+                    const auto valueEnd = lowerHeaders.find("\r\n", valueStart);
+                    const auto value = lowerHeaders.substr(valueStart, valueEnd == std::string::npos ? std::string::npos : valueEnd - valueStart);
+                    try { contentLength = static_cast<size_t>(std::stoul(value)); } catch (...) { contentLength = 0; }
+                }
+            }
+            while (headerEnd != std::string::npos && raw.size() < headerEnd + 4 + contentLength) {
+                received = static_cast<int>(recv(clientFd, buffer, sizeof(buffer), 0));
+                if (received <= 0) break;
+                raw.append(buffer, received);
+            }
+            const auto request = parseRequest(raw);
             const auto response = httpText(route(request));
             send(clientFd, response.c_str(), static_cast<int>(response.size()), 0);
         }
@@ -167,4 +188,3 @@ int main() {
 #endif
     return 0;
 }
-
