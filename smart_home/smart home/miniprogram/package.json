@@ -1,0 +1,9 @@
+{
+  "name": "smart-home-miniprogram",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Smart home system uni-app miniprogram client",
+  "scripts": {
+    "note": "Use HBuilderX to run this uni-app project."
+  }
+}

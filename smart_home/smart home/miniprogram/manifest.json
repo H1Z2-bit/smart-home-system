@@ -1,0 +1,19 @@
+{
+  "name": "智能家居综合管理系统",
+  "appid": "__UNI__SMART_HOME",
+  "description": "智能家居综合管理系统小程序端",
+  "versionName": "0.1.0",
+  "versionCode": "100",
+  "transformPx": false,
+  "mp-weixin": {
+    "appid": "touristappid",
+    "setting": {
+      "urlCheck": false,
+      "es6": true,
+      "postcss": true,
+      "minified": true
+    },
+    "usingComponents": true
+  },
+  "vueVersion": "3"
+}

@@ -62,3 +62,19 @@ backend/.env
 backend/*.db
 backend/keys/private_key.pem
 backend/keys/public_key.pem
+
+# Smart home packaged project
+smart_home/.venv/
+smart_home/.pytest_cache/
+smart_home/**/.venv/
+smart_home/**/.pytest_cache/
+smart_home/**/__pycache__/
+smart_home/**/node_modules/
+smart_home/**/dist/
+smart_home/**/test-results/
+smart_home/**/unpackage/
+smart_home/**/.env
+smart_home/**/keys/private_key.pem
+smart_home/**/keys/public_key.pem
+smart_home/smart home/backend_cpp_backup/
+smart_home/smart home/team_remote_smart_home_system/
